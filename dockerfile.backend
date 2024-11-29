@@ -1,9 +1,8 @@
-
-FROM node:18
+FROM node:18-alpine
 WORKDIR /app
-COPY package.json package-lock.json ./
-COPY . .
-RUN npm install --force
-RUN npm run build:backend:prod
+COPY backend/package.json backend/package-lock.json ./
+RUN npm install
+COPY backend .
+RUN npm install -g nodemon
 EXPOSE 3000
-CMD ["node", "dist/backend/main.js"]
+CMD ["npm", "run", "start:dev"]
