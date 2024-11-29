@@ -1,0 +1,51 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Category {
+  id          String       @id @default(uuid())
+  name        String       @unique 
+  description String?
+  tools       Tool[]       
+}
+
+model Tool {
+  id          String       @id @default(uuid())
+  name        String       @unique 
+  description String
+  type        String?     
+  skillLevel  String?      
+  categoryId  String
+  category    Category     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  providers   Provider[]  
+}
+
+model Provider {
+  id          String       @id @default(uuid())
+  name        String       @unique 
+  description String
+  imageUrl    String?      
+  features    String[]     
+  fitsFor     String[]    
+  skillLevel  String?      
+  toolId      String
+  tool        Tool         @relation(fields: [toolId], references: [id], onDelete: Cascade) 
+  pricingTiers PricingTier[] 
+}
+
+model PricingTier {
+  id            String     @id @default(uuid())
+  tierName      String     
+  price         Float
+  features      String[]   
+  limitations   String?    
+  providerId    String
+  provider      Provider   @relation(fields: [providerId], references: [id], onDelete: Cascade) // Valid cascade delete
+}
