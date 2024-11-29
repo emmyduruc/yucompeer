@@ -8,8 +8,11 @@ const prisma = new PrismaClient();
 @Injectable()
 export class TechStackService {
   async createTool(data: CreateToolDto) {
-    const parsedData = CreateToolSchema.parse(data); // Zod validation
-    return prisma.tool.create({ data: parsedData });
+    const parsedData = CreateToolSchema.parse(data);
+    return prisma.tool.create({
+      data: parsedData as any,
+      include: { providers: true, category: true },
+    });
   }
 
   async findAllTools() {
@@ -28,7 +31,7 @@ export class TechStackService {
   }
 
   async updateTool(id: string, data: UpdateToolDto) {
-    const parsedData = UpdateToolSchema.parse(data); // Zod validation
+    const parsedData = UpdateToolSchema.parse(data);
     return prisma.tool.update({
       where: { id },
       data: parsedData,

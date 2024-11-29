@@ -9,8 +9,9 @@ export const CreateToolSchema = z.object({
 });
 
 export const UpdateToolSchema = z.object({
-  name: z.string().min(1, 'Name is required').optional(),
+  name: z.string().min(1, 'Name is required'),
   description: z.string().optional(),
   type: z.enum(['Relational', 'Non-relational']).optional(),
   skillLevel: z.enum(['Beginner', 'Intermediate', 'Advanced']).optional(),
+  categoryId: z.string(),
 });

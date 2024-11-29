@@ -16,7 +16,7 @@ export class TechStackController {
 
   @Post()
   async create(@Body() body: CreateToolDto) {
-    return this.techStackService.createTool(body);
+    return await this.techStackService.createTool(body as CreateToolDto);
   }
 
   @Get()
