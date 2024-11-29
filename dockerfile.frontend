@@ -1,0 +1,15 @@
+
+
+# Stage 1: Build the frontend
+FROM node:18 AS builder
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm install --force
+COPY . .
+RUN npm run build:frontend:prod
+
+FROM nginx:alpine
+COPY --from=builder /app/dist/frontend /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
