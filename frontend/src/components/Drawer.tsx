@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { FiMenu, FiX } from 'react-icons/fi';
-import { usePathname } from 'next/navigation'; // Import usePathname to get the active route
+import { usePathname } from 'next/navigation'; 
 import { createTechStack } from '@/services/techStack';
 
 const Drawer: React.FC = () => {
@@ -40,12 +40,11 @@ const Drawer: React.FC = () => {
         <ul className="mt-4 space-y-2">
           {categories.map((category: { id: string; name: string }) => {
             const categoryPath = `/${category.name.toLowerCase().replace(/\s+/g, '-')}`;
-            const isActive = pathname === categoryPath; // Check if the current path matches the category path
+            const isActive = pathname === categoryPath; 
 
             return (
               <Link key={category.id}
                 href={categoryPath}>
-
                 <li
                   className={`${isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-700'
                     } ${isOpen ? 'p-4' : 'p-2 text-center'
