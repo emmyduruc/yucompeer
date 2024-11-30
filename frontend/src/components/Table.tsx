@@ -1,19 +1,5 @@
+import { Provider } from '@/schema/tools.schema';
 import React from 'react';
-
-type PricingTier = {
-  tierName: string;
-  price: number;
-  features: string[];
-  limitations: string | null;
-};
-
-type Provider = {
-  name: string;
-  description: string;
-  imageUrl: string;
-  skillLevel: string;
-  pricingTiers: PricingTier[];
-};
 
 type TableProps = {
   providers: Provider[];
@@ -21,12 +7,12 @@ type TableProps = {
 
 const Table: React.FC<TableProps> = ({ providers }) => {
   return (
-    <div className="p-4 overflow-x-auto">
-      <div className="flex gap-4 flex-1">
+    <div className="p-4 overflow-x-auto w-full">
+      <div className="flex gap-4 w-full h-full">
         {providers.map((provider) => (
           <div
             key={provider.name}
-            className="w-[400px] h-[700px] bg-white border-4 border-green-200 shadow-lg rounded-lg p-4 flex flex-col"
+            className="min-w-[400px] max-w-[400px] min-h-[800px] border-4 border-green-200 shadow-lg rounded-xl p-4 flex flex-col"
           >
             <div className="flex items-center mb-4">
               <img
@@ -34,15 +20,21 @@ const Table: React.FC<TableProps> = ({ providers }) => {
                 alt={provider.name}
                 className="h-20 w-20 object-contain mr-4"
               />
-              <h2 className="text-xl font-bold text-gray-800">{provider.name}</h2>
+              <h2 className="text-xl font-bold font-mono text-gray-800">
+                {provider.name}
+              </h2>
             </div>
-            <p className="text-sm text-gray-600 mb-4">{provider.description}</p>
-            <p className="text-sm text-gray-500 mb-4">
-              <strong>Skill Level:</strong> {provider.skillLevel || 'N/A'}
+            <p className="text-sm text-gray-600 mb-4 font-mono">
+              {provider.description}
+            </p>
+            <p className="text-sm font-mono text-gray-500 mb-4">
+              <strong>Skill Level:</strong> {provider?.skillLevel || 'N/A'}
             </p>
             <div>
-              <h3 className="text-md font-semibold mb-2 text-gray-700">Pricing Tiers</h3>
-              <div className="space-y-4">
+              <h3 className="text-md font-mono font-semibold mb-2 text-gray-700">
+                Pricing Tiers
+              </h3>
+              <div className="space-y-4 font-mono">
                 {provider.pricingTiers.map((tier) => (
                   <div
                     key={tier.tierName}
@@ -51,15 +43,17 @@ const Table: React.FC<TableProps> = ({ providers }) => {
                       borderColor: tier.limitations ? 'green' : 'green',
                     }}
                   >
-                    <h4 className="text-md font-bold text-gray-800">{tier.tierName}</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="text-md font-bold text-gray-800 my-2">
+                      {tier.tierName}
+                    </h4>
+                    <p className="text-sm text-gray-600 my-1">
                       <strong>Price:</strong> ${tier.price}
                     </p>
                     <p className="text-sm text-gray-600">
                       <strong>Features:</strong> {tier.features.join(', ')}
                     </p>
                     {tier.limitations ? (
-                      <p className="text-sm text-red-500">
+                      <p className="text-sm text-red-500 my-2">
                         <strong>Limitations:</strong> {tier.limitations}
                       </p>
                     ) : (

@@ -43,7 +43,7 @@ model Provider {
 model PricingTier {
   id            String     @id @default(uuid())
   tierName      String     
-  price         Float
+  price         String
   features      String[]   
   limitations   String?    
   providerId    String
