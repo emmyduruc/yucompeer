@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { FiMenu, FiX } from 'react-icons/fi';
 import { usePathname } from 'next/navigation';
 import { createTechStack } from '@/services/techStack';
@@ -11,6 +11,7 @@ import { Loading } from './Loading';
 import { Category, Tool } from '@/schema/tools.schema';
 
 const Drawer: React.FC = () => {
+  const queryClient = useQueryClient();
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(true);
 
@@ -60,7 +61,13 @@ const Drawer: React.FC = () => {
             const isActive = pathname === categoryPath;
 
             return (
-              <Link key={category.id} href={categoryPath}>
+              <Link
+                key={category.id}
+                href={categoryPath}
+                onClick={() => {
+                  queryClient.setQueryData(['selectedCategory'], category);
+                }}
+              >
                 <li
                   className={`${
                     isActive ? 'bg-green-600 text-white' : 'hover:bg-gray-700'

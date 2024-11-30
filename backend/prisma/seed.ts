@@ -10,14 +10,76 @@ async function main() {
   const categories = [
     {
       name: 'Databases',
-      description: 'Relational and Non-relational database solutions.',
+      description: `Databases are foundational components of software applications, used to store, manage, and retrieve data. 
+      They come in two primary types: relational (SQL) and non-relational (NoSQL) databases. Relational databases, such as 
+      MySQL and PostgreSQL, organize data in tables with defined relationships, making them suitable for structured data. 
+      Non-relational databases, like MongoDB and DynamoDB, store unstructured or semi-structured data, offering flexibility for dynamic schemas. 
+  
+      Additionally, databases can be serverless or self-managed, offering a range of options for scalability and maintenance. 
+      The table below allows users to compare database providers, highlighting pricing tiers, features, and use cases. 
+      This simplifies the process of selecting the most suitable database technology for your projects, saving time and effort by presenting 
+      detailed information in one place.`,
     },
-    { name: 'Cloud Services', description: 'Cloud computing platforms.' },
-    { name: 'Payment Services', description: 'Payment gateway solutions.' },
-    { name: 'CMSs', description: 'Content Management Systems.' },
+    {
+      name: 'Cloud Services',
+      description: `Cloud services provide scalable and cost-effective solutions for deploying, managing, and running applications 
+      without the need for on-premise infrastructure. They encompass offerings such as virtual machines, storage, networking, 
+      AI tools, and database management. Popular platforms like AWS, Google Cloud Platform, and DigitalOcean offer a range of pricing tiers, 
+      including free credits for new users. 
+  
+      The table below lets users compare cloud service providers, helping them decide on the best platform for their requirements 
+      by analyzing features, pricing, and suitability for specific workloads such as AI, IoT, or web hosting.`,
+    },
+    {
+      name: 'Payment Services',
+      description: `Payment services enable businesses to accept, process, and manage online payments securely. They provide 
+      integrations for credit/debit cards, digital wallets, and bank transfers. Popular providers like Stripe, PayPal, and Apple Pay 
+      offer features such as subscription billing, fraud detection, and global reach. 
+  
+      The table below allows users to compare payment gateway providers to determine the best fit for their business, based on 
+      transaction fees, features, and regional availability. This simplifies the decision-making process, ensuring seamless payment experiences.`,
+    },
+    {
+      name: 'CMSs',
+      description: `Content Management Systems (CMSs) simplify the creation, management, and organization of digital content. 
+      They are widely used for websites, blogs, and e-commerce platforms. Popular CMSs include WordPress, Strapi, and Contentful. 
+      These platforms provide templates, plugins, and integrations for SEO, analytics, and more. 
+  
+      Below, users can compare CMS options based on pricing tiers, customization capabilities, and ease of use to determine which 
+      system best aligns with their needs for website or application development.`,
+    },
     {
       name: 'Project Management Tools',
-      description: 'Tools for managing projects and teams.',
+      description: `Project management tools streamline the planning, tracking, and execution of tasks within teams. Platforms like Jira, ClickUp, 
+      and Trello offer features such as task assignment, progress tracking, and collaboration to enhance productivity. 
+  
+      The table below lets users compare these tools, providing detailed insights into pricing tiers, integrations, and feature sets. 
+      This enables teams to select the most efficient solution for managing workflows and meeting project deadlines.`,
+    },
+    {
+      name: 'Development Workflow Tools',
+      description: `Development workflow tools, such as GitHub, GitLab, and Bitbucket, are essential for managing source code, collaboration, 
+      and version control in software development. These tools support continuous integration, deployment (CI/CD), and code reviews. 
+  
+      The table below provides a comparison of these platforms, helping users identify the best fit for their development needs 
+      based on pricing, scalability, and team collaboration features.`,
+    },
+    {
+      name: 'IDEs',
+      description: `Integrated Development Environments (IDEs) are essential tools for developers to write, debug, and test code. 
+      Popular IDEs such as Visual Studio Code, IntelliJ IDEA, and PyCharm offer features like syntax highlighting, code completion, 
+      and version control integration. 
+  
+      The table below allows users to compare IDEs based on pricing (some are free), supported languages, and developer productivity features. 
+      This ensures developers can select the IDE that enhances their workflow and efficiency.`,
+    },
+    {
+      name: 'No-Code Platforms',
+      description: `No-code platforms, like Webflow, Bubble, and Glide, empower users to create websites, mobile apps, and business tools 
+      without writing any code. They feature drag-and-drop interfaces, pre-built templates, and integrations with popular services. 
+  
+      The table below provides comparisons of no-code platforms based on pricing, scalability, and ease of use, 
+      enabling users to choose the most suitable solution for their projects.`,
     },
   ];
 

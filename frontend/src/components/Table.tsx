@@ -40,7 +40,7 @@ const Table: React.FC<TableProps> = ({ providers }) => {
                     key={tier.tierName}
                     className="bg-gray-100 border-l-4 p-3 rounded shadow-xl"
                     style={{
-                      borderColor: tier.limitations ? 'green' : 'green',
+                      borderColor: tier.limitations ? 'red' : 'green',
                     }}
                   >
                     <h4 className="text-md font-bold text-gray-800 my-2">
