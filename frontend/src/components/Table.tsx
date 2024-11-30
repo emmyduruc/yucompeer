@@ -22,17 +22,17 @@ type TableProps = {
 const Table: React.FC<TableProps> = ({ providers }) => {
   return (
     <div className="p-4 overflow-x-auto">
-      <div className="flex gap-4">
+      <div className="flex gap-4 flex-1">
         {providers.map((provider) => (
           <div
             key={provider.name}
-            className="min-w-[300px] bg-white border border-gray-200 shadow-lg rounded-lg p-4 flex flex-col"
+            className="w-[400px] h-[700px] bg-white border-4 border-green-200 shadow-lg rounded-lg p-4 flex flex-col"
           >
             <div className="flex items-center mb-4">
               <img
                 src={provider.imageUrl}
                 alt={provider.name}
-                className="h-12 w-12 object-contain mr-4"
+                className="h-20 w-20 object-contain mr-4"
               />
               <h2 className="text-xl font-bold text-gray-800">{provider.name}</h2>
             </div>
@@ -46,9 +46,9 @@ const Table: React.FC<TableProps> = ({ providers }) => {
                 {provider.pricingTiers.map((tier) => (
                   <div
                     key={tier.tierName}
-                    className="bg-gray-100 border-l-4 p-3 rounded shadow-sm"
+                    className="bg-gray-100 border-l-4 p-3 rounded shadow-xl"
                     style={{
-                      borderColor: tier.limitations ? 'red' : 'green',
+                      borderColor: tier.limitations ? 'green' : 'green',
                     }}
                   >
                     <h4 className="text-md font-bold text-gray-800">{tier.tierName}</h4>
