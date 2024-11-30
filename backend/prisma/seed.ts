@@ -3,7 +3,10 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  // Categories
+  await prisma.provider.deleteMany();
+  await prisma.tool.deleteMany();
+  await prisma.category.deleteMany();
+
   const categories = [
     {
       name: 'Databases',
@@ -36,8 +39,20 @@ async function main() {
         {
           name: 'Supabase',
           description: 'PostgreSQL-powered backend-as-a-service.',
-          imageUrl: 'https://logo.supabase.png',
-          features: ['Auth', 'Storage', 'Realtime'],
+          imageUrl:
+            'https://cdn.prod.website-files.com/655b60964be1a1b36c746790/655b60964be1a1b36c746d41_646dfce3b9c4849f6e401bff_supabase-logo-icon_1.png',
+          features: [
+            'Auth',
+            'Storage',
+            'Realtime',
+            'Functions',
+            'Tables',
+            'API',
+            'CLI',
+            'Webhooks',
+            'Scheduled tasks',
+            'Extensions',
+          ],
           fitsFor: ['Web applications', 'Serverless backends'],
           skillLevel: 'Beginner',
           pricingTiers: [
@@ -69,8 +84,16 @@ async function main() {
         {
           name: 'Firebase',
           description: 'NoSQL database and serverless platform.',
-          imageUrl: 'https://logo.firebase.png',
-          features: ['Realtime database', 'Cloud functions', 'Hosting'],
+          imageUrl:
+            'https://www.ichdata.com/wp-content/uploads/2017/06/2024070803153850.png',
+          features: [
+            'Realtime database',
+            'Cloud functions',
+            'Hosting',
+            'Auth',
+            'Storage',
+            'Analytics',
+          ],
           fitsFor: ['Small apps', 'Serverless backends'],
           skillLevel: 'Beginner',
           pricingTiers: [
@@ -107,7 +130,7 @@ async function main() {
           name: 'AWS',
           description:
             'Amazon Web Services offering IaaS, PaaS, and SaaS solutions.',
-          imageUrl: 'https://logo.aws.png',
+          imageUrl: 'https://saviynt.com/hubfs/aws.png',
           features: ['Compute', 'Storage', 'Database'],
           fitsFor: ['Large-scale apps', 'Enterprise solutions'],
           skillLevel: 'Intermediate',
@@ -115,13 +138,25 @@ async function main() {
             {
               tierName: 'Free',
               price: 0,
-              features: ['750 hours EC2 t2.micro', '5GB S3'],
+              features: [
+                '750 hours EC2 t2.micro',
+                '5GB S3',
+                '30GB EBS',
+                'RDS',
+                'DynamoDB',
+                'Lambda',
+              ],
               limitations: '12 months limit',
             },
             {
               tierName: 'Pay-as-you-go',
               price: 0,
-              features: ['Flexible pricing'],
+              features: [
+                'Flexible pricing',
+                'No upfront costs',
+                'No long-term contracts',
+                'No termination fees',
+              ],
               limitations: 'Depends on usage',
             },
           ],
@@ -141,15 +176,51 @@ async function main() {
           name: 'GCP',
           description:
             'Google Cloud Platform offering compute, storage, and AI services.',
-          imageUrl: 'https://logo.gcp.png',
+          imageUrl:
+            'https://miit.edu.mu/wp-content/uploads/2023/08/google-cloud-logo-0.png',
           features: ['Compute', 'AI tools', 'Big Data'],
-          fitsFor: ['AI-heavy apps', 'Data processing workflows'],
+          fitsFor: [
+            'AI-heavy apps',
+            'Data processing workflows',
+            'Web apps',
+            'Mobile backends',
+            'IoT apps',
+            'Games',
+            'DevOps',
+            'Enterprise solutions',
+          ],
           skillLevel: 'Intermediate',
           pricingTiers: [
             {
               tierName: 'Free',
               price: 0,
-              features: ['F1-micro instance', '5GB storage'],
+              features: [
+                'F1-micro instance',
+                '5GB storage',
+                '1GB BigQuery',
+                'Cloud Functions',
+                'Cloud Run',
+                'Cloud Build',
+                'Cloud Storage',
+                'Cloud Firestore',
+                'Cloud Pub/Sub',
+                'Cloud Scheduler',
+                'Cloud Tasks',
+                'Cloud Logging',
+                'Cloud Monitoring',
+                'Cloud Trace',
+                'Cloud Debugger',
+                'Cloud Console',
+                'Cloud Shell',
+                'Cloud IAM',
+                'Cloud Billing',
+                'Cloud Support',
+                'Cloud Marketplace',
+                'Cloud APIs',
+                'Cloud SDK',
+                'Cloud Mobile App',
+                'Cloud Web Console',
+              ],
               limitations: 'Usage limits',
             },
             {
@@ -177,14 +248,32 @@ async function main() {
         {
           name: 'Stripe',
           description: 'Payment gateway for seamless transactions.',
-          imageUrl: 'https://logo.stripe.png',
-          features: ['Integrated payments', 'Subscription billing'],
-          fitsFor: ['E-commerce', 'Subscription services'],
+          imageUrl: 'https://logos-marques.com/stripe-logo/stripe-logo/',
+          features: [
+            'Integrated payments',
+            'Subscription billing',
+            'Payouts',
+            'Connect',
+            'Radar',
+          ],
+          fitsFor: [
+            'E-commerce',
+            'Subscription services',
+            'Marketplaces',
+            'On-demand services',
+            'Platforms',
+            'Nonprofits',
+          ],
           pricingTiers: [
             {
               tierName: 'Standard',
               price: 2.9,
-              features: ['2.9% + 30¢ per transaction'],
+              features: [
+                '2.9% + 30¢ per transaction',
+                'No setup fees',
+                'No monthly fees',
+                'No hidden costs',
+              ],
               limitations: 'Per transaction cost',
             },
           ],
@@ -202,14 +291,25 @@ async function main() {
         {
           name: 'PayPal',
           description: 'Simplified payments for online businesses.',
-          imageUrl: 'https://logo.paypal.png',
+          imageUrl:
+            'https://qpro.nl/wp-content/uploads/2024/02/Paypal_2014_logo-e1708092007619.png.webp',
           features: ['One-click checkout', 'Global reach'],
-          fitsFor: ['E-commerce', 'Cross-border transactions'],
+          fitsFor: [
+            'E-commerce',
+            'Cross-border transactions',
+            'Marketplaces',
+            'Nonprofits',
+          ],
           pricingTiers: [
             {
               tierName: 'Standard',
               price: 2.9,
-              features: ['2.9% + 30¢ per transaction'],
+              features: [
+                '2.9% + 30¢ per transaction',
+                'No setup fees',
+                'No monthly fees',
+                'No hidden costs',
+              ],
               limitations: 'High transaction fees',
             },
           ],
@@ -230,20 +330,48 @@ async function main() {
         {
           name: 'WordPress.com',
           description: 'Managed hosting for WordPress websites.',
-          imageUrl: 'https://logo.wordpress.png',
-          features: ['Themes', 'Plugins', 'Managed hosting'],
-          fitsFor: ['Small businesses', 'Personal blogs'],
+          imageUrl:
+            'https://help.brevo.com/hc/article_attachments/12685441277458',
+          features: [
+            'Themes',
+            'Plugins',
+            'Managed hosting',
+            'SEO tools',
+            'Analytics',
+            'E-commerce',
+          ],
+          fitsFor: [
+            'Small businesses',
+            'Personal blogs',
+            'E-commerce',
+            'News',
+            'Portfolio',
+          ],
           pricingTiers: [
             {
               tierName: 'Free',
               price: 0,
-              features: ['Basic themes'],
+              features: [
+                'Basic themes',
+                'Community support',
+                '3GB storage',
+                'Free domain',
+                'Jetpack essentials',
+                'Dozens of free themes',
+              ],
               limitations: 'Limited customization',
             },
             {
               tierName: 'Business',
               price: 25,
-              features: ['Custom plugins', 'Unlimited themes'],
+              features: [
+                'Custom plugins',
+                'Unlimited themes',
+                '200GB storage',
+                'SEO tools',
+                'Google Analytics',
+                'E-commerce',
+              ],
               limitations: 'Higher costs',
             },
           ],

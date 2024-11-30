@@ -7,63 +7,73 @@ type PricingTier = {
   limitations: string | null;
 };
 
-type Tool = {
+type Provider = {
   name: string;
   description: string;
-  skillLevel: string;
   imageUrl: string;
+  skillLevel: string;
   pricingTiers: PricingTier[];
 };
 
 type TableProps = {
-  tools: Tool[];
+  providers: Provider[];
 };
 
-const Table: React.FC<TableProps> = ({ tools }) => {
+const Table: React.FC<TableProps> = ({ providers }) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="table-auto w-full border-collapse border border-gray-300">
-        <thead>
-          <tr>
-            <th className="border border-gray-300 px-4 py-2">Image</th>
-            <th className="border border-gray-300 px-4 py-2">Name</th>
-            <th className="border border-gray-300 px-4 py-2">Description</th>
-            <th className="border border-gray-300 px-4 py-2">Skill Level</th>
-            <th className="border border-gray-300 px-4 py-2">Pricing Tiers</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tools.map((tool) => (
-            <tr key={tool.name}>
-              <td className="border border-gray-300 px-4 py-2">
-                <img
-                  src={tool.imageUrl}
-                  alt={tool.name}
-                  className="h-12 w-12 object-contain"
-                />
-              </td>
-              <td className="border border-gray-300 px-4 py-2">{tool.name}</td>
-              <td className="border border-gray-300 px-4 py-2">
-                {tool.description}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {tool.skillLevel}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {tool.pricingTiers.map((tier) => (
-                  <div key={tier.tierName}>
-                    <strong>{tier.tierName}:</strong> ${tier.price} -{' '}
-                    {tier.features.join(', ')}{' '}
-                    {tier.limitations && (
-                      <span>(Limitations: {tier.limitations})</span>
+    <div className="p-4 overflow-x-auto">
+      <div className="flex gap-4">
+        {providers.map((provider) => (
+          <div
+            key={provider.name}
+            className="min-w-[300px] bg-white border border-gray-200 shadow-lg rounded-lg p-4 flex flex-col"
+          >
+            <div className="flex items-center mb-4">
+              <img
+                src={provider.imageUrl}
+                alt={provider.name}
+                className="h-12 w-12 object-contain mr-4"
+              />
+              <h2 className="text-xl font-bold text-gray-800">{provider.name}</h2>
+            </div>
+            <p className="text-sm text-gray-600 mb-4">{provider.description}</p>
+            <p className="text-sm text-gray-500 mb-4">
+              <strong>Skill Level:</strong> {provider.skillLevel || 'N/A'}
+            </p>
+            <div>
+              <h3 className="text-md font-semibold mb-2 text-gray-700">Pricing Tiers</h3>
+              <div className="space-y-4">
+                {provider.pricingTiers.map((tier) => (
+                  <div
+                    key={tier.tierName}
+                    className="bg-gray-100 border-l-4 p-3 rounded shadow-sm"
+                    style={{
+                      borderColor: tier.limitations ? 'red' : 'green',
+                    }}
+                  >
+                    <h4 className="text-md font-bold text-gray-800">{tier.tierName}</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>Price:</strong> ${tier.price}
+                    </p>
+                    <p className="text-sm text-gray-600">
+                      <strong>Features:</strong> {tier.features.join(', ')}
+                    </p>
+                    {tier.limitations ? (
+                      <p className="text-sm text-red-500">
+                        <strong>Limitations:</strong> {tier.limitations}
+                      </p>
+                    ) : (
+                      <p className="text-sm text-green-500">
+                        <strong>Limitations:</strong> None
+                      </p>
                     )}
                   </div>
                 ))}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

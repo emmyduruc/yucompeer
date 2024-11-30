@@ -14,6 +14,29 @@ export class TechStackService {
       include: { providers: true, category: true },
     });
   }
+  async getProvidersByCategory(category: string) {
+    const categoryEntity = await prisma.category.findFirst({
+      where: { name: { equals: category, mode: 'insensitive' } },
+      include: {
+        tools: {
+          include: {
+            providers: {
+              include: {
+                pricingTiers: true,
+              },
+            },
+          },
+        },
+      },
+    });
+
+    if (!categoryEntity) {
+      throw new NotFoundException(`Category "${category}" not found`);
+    }
+
+    const providers = categoryEntity.tools.flatMap((tool) => tool.providers);
+    return providers;
+  }
 
   async findAllTools() {
     return prisma.tool.findMany({

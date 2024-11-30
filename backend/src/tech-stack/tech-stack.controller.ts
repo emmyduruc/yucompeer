@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { TechStackService } from './tech-stack.service';
 import { CreateToolDto, UpdateToolDto } from './dto';
@@ -22,6 +23,14 @@ export class TechStackController {
   @Get()
   async findAll() {
     return this.techStackService.findAllTools();
+  }
+
+  @Get('/providers')
+  async getProvidersByCategory(@Query('category') category: string) {
+    if (!category) {
+      return { error: 'Category is required' };
+    }
+    return this.techStackService.getProvidersByCategory(category);
   }
 
   @Get(':id')

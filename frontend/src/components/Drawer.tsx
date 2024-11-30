@@ -2,33 +2,69 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-
-const categories = ['Databases', 'Cloud Services', 'Payment Providers', 'CMS Tools', 'Project Management'];
+import { useQuery } from '@tanstack/react-query';
+import { FiMenu, FiX } from 'react-icons/fi';
+import { usePathname } from 'next/navigation'; // Import usePathname to get the active route
+import { createTechStack } from '@/services/techStack';
 
 const Drawer: React.FC = () => {
+  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(true);
 
+  const { data: techStack, isLoading, error } = useQuery({
+    queryKey: ['techStack'],
+    queryFn: createTechStack.fetchTechStack,
+  });
+
+  if (isLoading) return <div>Loading categories...</div>;
+  if (error) return <div>Error loading categories</div>;
+
+
+  const categories = Array.from(
+    new Set(
+      techStack.map((tool: any) => tool.category).map((category: any) => JSON.stringify(category))
+    )
+  ).map((category: any) => JSON.parse(category));
+
+
   return (
-    <div
-      className={`bg-gray-800 text-white ${
-        isOpen ? 'w-64' : 'w-16'
-      } h-full flex flex-col transition-all duration-300`}
-    >
+    <div className={`flex flex-col ${isOpen ? 'w-64' : 'w-16'} h-full transition-all duration-300 bg-gray-800 text-white`}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="p-4 focus:outline-none"
       >
-        {isOpen ? 'Collapse' : 'Expand'}
+        {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
       </button>
-      <ul className="mt-4">
-        {categories.map((category) => (
-          <li key={category} className="p-4 hover:bg-gray-700">
-            <Link href={`/${category.toLowerCase().replace(' ', '-')}`}>
-              {isOpen ? category : category[0]}
-            </Link>
-          </li>
-        ))}
-      </ul>
+
+      <div className={`flex-1`}>
+        <ul className="mt-4 space-y-2">
+          {categories.map((category: { id: string; name: string }) => {
+            const categoryPath = `/${category.name.toLowerCase().replace(/\s+/g, '-')}`;
+            const isActive = pathname === categoryPath; // Check if the current path matches the category path
+
+            return (
+              <Link key={category.id}
+                href={categoryPath}>
+
+                <li
+                  className={`${isActive ? 'bg-blue-600 text-white' : 'hover:bg-gray-700'
+                    } ${isOpen ? 'p-4' : 'p-2 text-center'
+                    } transition-all duration-300`}
+                >
+                  {isOpen ? (
+                    category?.name
+                  ) : (
+                    <span className="text-lg font-bold">
+                      {category?.name?.[0].toUpperCase()}
+                    </span>
+                  )}
+                </li>
+              </Link>
+
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };
