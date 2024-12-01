@@ -68,7 +68,7 @@ const CategoryPage = () => {
           <option value="" disabled>
             Select first provider to compare
           </option>
-          {providers.map((provider: Provider) => (
+          {providers?.map((provider: Provider) => (
             <option key={provider.name} value={provider.name}>
               {provider.name}
             </option>
