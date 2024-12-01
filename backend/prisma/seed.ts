@@ -1,5 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 
+export enum PricingTierSupportEnum {
+  STANDARD = 'STANDARD',
+  PRIORITY = 'PRIORITY',
+}
+
 const prisma = new PrismaClient();
 
 async function main() {
@@ -92,7 +97,8 @@ async function main() {
     {
       tool: {
         name: 'PostgreSQL',
-        description: 'Relational database with strong ACID compliance.',
+        description:
+          'PostgreSQL is an open-source, object-relational database system known for its reliability, extensibility, and high performance. It supports advanced features like ACID compliance, complex queries, and extensible data types. PostgreSQL is a robust solution for web, mobile, and analytic applications, making it a go-to choice for developers building scalable applications.',
         type: 'Relational',
         skillLevel: 'Intermediate',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
@@ -100,35 +106,84 @@ async function main() {
       providers: [
         {
           name: 'Supabase',
-          description: 'PostgreSQL-powered backend-as-a-service.',
+          description:
+            'Supabase is a powerful backend-as-a-service platform built on top of PostgreSQL. It provides developers with instant APIs, real-time functionality, and built-in authentication and storage. Supabase is ideal for creating scalable applications quickly without worrying about infrastructure.',
           imageUrl:
             'https://cdn.prod.website-files.com/655b60964be1a1b36c746790/655b60964be1a1b36c746d41_646dfce3b9c4849f6e401bff_supabase-logo-icon_1.png',
           features: [
-            'Auth',
-            'Storage',
-            'Realtime',
-            'Functions',
-            'Tables',
-            'API',
-            'CLI',
+            'PostgreSQL database',
+            'Authentication',
+            'File storage',
+            'Realtime database updates',
+            'Edge functions (serverless)',
+            'RESTful APIs',
             'Webhooks',
+            'CLI for management',
+            'Database extensions',
+            'Row-level security',
             'Scheduled tasks',
-            'Extensions',
           ],
-          fitsFor: ['Web applications', 'Serverless backends', 'APIs'],
+          fitsFor: [
+            'Web applications',
+            'Mobile backends',
+            'APIs for modern apps',
+            'Serverless solutions',
+          ],
           skillLevel: 'Beginner',
           pricingTiers: [
             {
               tierName: 'Free',
               price: '0',
-              features: ['10GB storage', '50MB database'],
-              limitations: 'Limited support',
+              features: [
+                'Unlimited API requests',
+                '50,000 monthly active users',
+                '500MB database space',
+                '5GB file storage',
+                'Community support',
+              ],
+              limitations:
+                'Projects paused after 1 week of inactivity and Limit of 2 active projects',
             },
             {
               tierName: 'Pro',
-              price: '25',
-              features: ['100GB storage', '1GB database'],
-              limitations: 'No enterprise features',
+              price: '25/month',
+              features: [
+                '100,000 monthly active users (then 0.00325 per MAU)',
+                '8GB disk size per project (then 0.125 per GB)',
+                '250GB bandwidth (then 0.09 per GB)',
+                '100GB file storage (then 0.021 per GB)',
+                'Email support',
+                'Daily backups stored for 7 days',
+                '7-day log retention',
+              ],
+              limitations: 'Additional costs for overages',
+            },
+            {
+              tierName: 'Team',
+              price: '599/month',
+              features: [
+                'SOC2 compliance',
+                'HIPAA (available as a paid add-on)',
+                'Read-only and billing member roles',
+                'SSO for Supabase Dashboard',
+                'Priority email support & SLAs',
+                'Daily backups stored for 14 days',
+                '28-day log retention',
+              ],
+              limitations: 'Additional costs for HIPAA compliance',
+            },
+            {
+              tierName: 'Enterprise',
+              price: 'Custom',
+              features: [
+                'Dedicated support manager',
+                'Uptime SLAs',
+                'On-premise support',
+                '24/7 enterprise support',
+                'Private Slack channel',
+                'Custom security questionnaires',
+              ],
+              limitations: 'Custom pricing based on requirements',
             },
           ],
         },
@@ -174,88 +229,82 @@ async function main() {
       tool: {
         name: 'Redis',
         description:
-          'In-memory key-value store for caching and real-time analytics.',
+          'Redis is an in-memory key-value store designed for high performance and scalability. It is ideal for caching, real-time analytics, and session management. Redis supports advanced data structures like lists, sets, and sorted sets, making it versatile for various use cases.',
         type: 'Non-relational',
         skillLevel: 'Beginner',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
       },
       providers: [
         {
-          name: 'Redis',
+          name: 'Redis Enterprise Cloud',
           description:
-            'In-memory key-value store for caching and real-time analytics.',
+            'Redis Enterprise Cloud offers a fully managed Redis experience, providing high availability, seamless scaling, and built-in support for Redis modules.',
           imageUrl:
             'https://cdn4.iconfinder.com/data/icons/redis-2/1451/Untitled-2-512.png',
-          features: ['Key-value storage', 'Pub/Sub', 'Lua scripting'],
-          fitsFor: ['Caching', 'Session management'],
-          skillLevel: 'Beginner',
-          pricingTiers: [
-            {
-              tierName: 'Free',
-              price: '0',
-              features: ['50MB RAM'],
-              limitations: 'Shared instance',
-            },
-            {
-              tierName: 'Standard',
-              price: '30',
-              features: ['1GB RAM'],
-              limitations: 'Single region',
-            },
-          ],
-        },
-      ],
-    },
-    {
-      tool: {
-        name: 'MongoDB',
-        description:
-          'Document-oriented NoSQL database for modern applications.',
-        type: 'Non-relational',
-        skillLevel: 'Beginner',
-        categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
-      },
-      providers: [
-        {
-          name: 'MongoDB',
-          description:
-            'Document-oriented NoSQL database for modern applications.',
-          imageUrl:
-            'https://miro.medium.com/v2/resize:fit:512/1*doAg1_fMQKWFoub-6gwUiQ.png',
           features: [
-            'Flexible schema',
-            'Global replication',
-            'Cluster management',
+            'Key-value storage',
+            'Pub/Sub messaging',
+            'Lua scripting',
+            'Active-active geo-distribution',
+            'Redis modules support',
           ],
           fitsFor: [
+            'Caching',
+            'Session management',
             'Real-time analytics',
-            'Mobile apps',
-            'IoT applications',
-            'E-commerce',
+            'Search applications',
           ],
           skillLevel: 'Beginner',
           pricingTiers: [
             {
-              tierName: 'Free',
-              price: '0',
-              features: ['512MB storage'],
-              limitations: 'Shared cluster only',
+              tierName: 'Essentials',
+              price: '5/month',
+              features: [
+                'Single 12GB database',
+                '16,000 operations per second',
+                '10,000 connections',
+                '99.99% uptime',
+                'On-demand and daily backups',
+              ],
+              limitations: 'Basic support, limited scalability',
             },
             {
-              tierName: 'Dedicated',
-              price: '57',
-              features: ['Dedicated resources'],
-              limitations: 'Higher cost',
+              tierName: 'Pro',
+              price: '0.881/hour',
+              features: [
+                'Unlimited databases of unlimited size',
+                'Unlimited operations per second',
+                'Unlimited connections',
+                '99.999% uptime',
+                'Dedicated VPC',
+                'Active-active geo-replication',
+                'Auto-tiering',
+              ],
+              limitations: 'Usage-based pricing for high throughput',
+            },
+            {
+              tierName: 'Enterprise',
+              price: 'Contact sales',
+              features: [
+                'Custom configurations for enterprise needs',
+                '99.999% uptime SLA',
+                'Advanced security and compliance',
+                'Customer success packages',
+                'Annual discounts',
+                'Premium support',
+              ],
+              limitations: 'Enterprise-level subscription required',
             },
           ],
         },
       ],
     },
+
     {
       tool: {
         name: 'CockroachDB',
         description:
-          'Distributed SQL database designed for global-scale applications.',
+          'CockroachDB is a distributed SQL database designed to handle global-scale applications with high availability and resilience. It offers multi-region support and ensures strong consistency with ACID compliance.',
         type: 'Relational',
         skillLevel: 'Advanced',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
@@ -264,7 +313,7 @@ async function main() {
         {
           name: 'CockroachDB',
           description:
-            'Distributed SQL database designed for global-scale applications.',
+            'CockroachDB provides a distributed SQL platform designed for modern applications requiring horizontal scaling, global data distribution, and high availability.',
           imageUrl:
             'https://upload.wikimedia.org/wikipedia/en/3/31/Cockroach_Labs_Logo.png',
           features: [
@@ -272,26 +321,57 @@ async function main() {
             'Horizontal scaling',
             'High availability',
             'ACID compliance',
+            'Multi-region support',
           ],
           fitsFor: [
             'Distributed systems',
-            'Global apps',
-            'High availability',
-            'Multi-region',
+            'Global-scale apps',
+            'High availability applications',
+            'Multi-region architectures',
           ],
           skillLevel: 'Advanced',
           pricingTiers: [
             {
-              tierName: 'Free',
+              tierName: 'Basic',
               price: '0',
-              features: ['5GB storage'],
-              limitations: 'Single region only',
+              features: [
+                '50 million Request Units (RUs) per month',
+                '10GB storage free per month',
+                'On-demand compute and storage scaling',
+                'AWS and GCP multi-region support for select regions',
+                'IP allowlist access control',
+                '99.99% availability',
+              ],
+              limitations:
+                'Limited to minimal operational and security requirements.',
             },
             {
-              tierName: 'Serverless',
-              price: '50',
-              features: ['10GB storage', 'Multi-region'],
-              limitations: null,
+              tierName: 'Standard (Preview)',
+              price: '146/month',
+              features: [
+                'Provisioned compute with scaling up to 60 vCPUs',
+                'On-demand storage',
+                'AWS and GCP multi-region support for select regions',
+                'Private connectivity',
+                'Metrics and log export to DataDog',
+                '99.99% availability',
+              ],
+              limitations:
+                'Suitable for most applications requiring scalable infrastructure.',
+            },
+            {
+              tierName: 'Advanced',
+              price: '476/month',
+              features: [
+                'Provisioned compute and storage with unlimited scaling',
+                'AWS, GCP, and Azure multi-region support for all regions',
+                'Private connectivity',
+                'Metrics and log export to DataDog',
+                'Up to 99.999% availability',
+                'CMEK and controls for PCI / HIPAA compliance',
+              ],
+              limitations:
+                'Targeted at applications with sophisticated security needs.',
             },
           ],
         },
@@ -300,7 +380,8 @@ async function main() {
     {
       tool: {
         name: 'Firebase',
-        description: 'NoSQL backend-as-a-service by Google.',
+        description:
+          'Firebase is a comprehensive backend-as-a-service (BaaS) platform by Google, designed to simplify app development with features like real-time databases, cloud functions, hosting, and analytics.',
         type: 'Non-relational',
         skillLevel: 'Beginner',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
@@ -308,31 +389,54 @@ async function main() {
       providers: [
         {
           name: 'Firebase',
-          description: 'NoSQL database and serverless platform.',
+          description:
+            'Firebase offers a serverless platform with real-time NoSQL databases, cloud storage, hosting, and analytics tailored for small to medium-scale applications.',
           imageUrl:
             'https://www.ichdata.com/wp-content/uploads/2017/06/2024070803153850.png',
           features: [
             'Realtime database',
-            'Cloud functions',
+            'Cloud Functions',
+            'Cloud Storage',
             'Hosting',
-            'Auth',
-            'Storage',
+            'Authentication',
+            'Performance Monitoring',
             'Analytics',
           ],
-          fitsFor: ['Small apps', 'Serverless backends'],
+          fitsFor: [
+            'Small apps',
+            'Serverless backends',
+            'Mobile apps',
+            'Web apps',
+          ],
           skillLevel: 'Beginner',
           pricingTiers: [
             {
-              tierName: 'Spark',
+              tierName: 'Spark (No-cost)',
               price: '0',
-              features: ['1GB storage', '50K reads'],
-              limitations: 'Limited usage',
+              features: [
+                'Realtime Database: 1GB stored, 50K reads/day, 20K writes/day',
+                'Cloud Firestore: 1GB storage, 50K reads/day, 20K writes/day, 1GB downloaded',
+                'Cloud Functions: Up to 2M invocations/month, 400K GB-seconds/month',
+                'Hosting: 10GB stored, 360MB/day data transfer',
+                'Cloud Storage: 5GB storage, 50K downloads/day',
+                'Authentication: Free for 50K MAUs (Monthly Active Users)',
+              ],
+              limitations:
+                'Generous limits for prototyping and small-scale apps. Limited to predefined quotas.',
             },
             {
-              tierName: 'Blaze',
-              price: '0',
-              features: ['Pay-as-you-go'],
-              limitations: 'Charges based on usage',
+              tierName: 'Blaze (Pay-as-you-go)',
+              price: 'Based on usage',
+              features: [
+                'Realtime Database: $5/GB stored, $1/GB downloaded',
+                'Cloud Firestore: Charged per operations and storage',
+                'Cloud Functions: $0.40/million invocations, $0.0000025/GB-second',
+                'Hosting: $0.15/GB transferred, $0.026/GB stored',
+                'Cloud Storage: $0.026/GB stored, $0.12/GB downloaded',
+                'Authentication: Charges based on additional MAUs beyond free limits',
+              ],
+              limitations:
+                'Pay-as-you-go plan suitable for scaling. Costs can increase rapidly with heavy usage.',
             },
           ],
         },
@@ -342,7 +446,7 @@ async function main() {
       tool: {
         name: 'Oracle Database',
         description:
-          'Enterprise-grade relational database with advanced analytics.',
+          'Oracle Database is an enterprise-grade relational database known for its advanced analytics, high availability, and support for mission-critical workloads. It is ideal for large-scale enterprise applications, big data solutions, and workloads requiring robust performance and reliability. Oracle Database offers flexible deployment options including on-premises and cloud-based solutions.',
         type: 'Relational',
         skillLevel: 'Advanced',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
@@ -351,27 +455,67 @@ async function main() {
         {
           name: 'Oracle Database',
           description:
-            'Enterprise-grade relational database with advanced analytics.',
+            'Oracle Database offers a wide range of solutions, including advanced analytics, multi-model support, and high availability. It provides flexible pricing based on OCPU and storage usage, making it suitable for diverse enterprise needs.',
           imageUrl: 'https://m.media-amazon.com/images/I/41QodfboFdL.png',
           features: [
             'Advanced analytics',
-            'Cloud support',
+            'Cloud and on-premises support',
             'Multi-model database',
             'High availability',
+            'Robust performance',
           ],
           fitsFor: [
-            'Enterprise apps',
+            'Enterprise applications',
             'Mission-critical workloads',
-            'Big data',
+            'Big data solutions',
             'High availability',
           ],
           skillLevel: 'Advanced',
           pricingTiers: [
             {
-              tierName: 'Standard',
-              price: '500',
-              features: ['High availability'],
-              limitations: 'License required',
+              tierName: 'Base Database Service - Virtual Machine',
+              price: '0.2151 per OCPU per hour',
+              features: ['Basic database service with enterprise features'],
+              limitations: 'Pricing increases for advanced performance tiers',
+            },
+            {
+              tierName: 'Base Database Service on Arm - Enterprise',
+              price: '0.2151 per OCPU per hour',
+              features: ['Enterprise-grade database service on Arm'],
+              limitations: 'Limited to Arm-based virtual machines',
+            },
+            {
+              tierName: 'Base Database Service on Arm - High Performance',
+              price: '0.4436 per OCPU per hour',
+              features: ['High-performance database operations on Arm'],
+              limitations: 'Additional cost for high performance',
+            },
+            {
+              tierName: 'Database Enterprise Edition',
+              price: '0.4301 per OCPU per hour',
+              features: ['Includes advanced enterprise features'],
+              limitations: 'License required for enterprise features',
+            },
+            {
+              tierName: 'Database Enterprise Edition High Performance',
+              price: '0.8871 per OCPU per hour',
+              features: ['Optimized for high performance and analytics'],
+              limitations: 'Requires additional high-performance configuration',
+            },
+            {
+              tierName: 'Block Volume Storage',
+              price: '0.0255 per GB per month',
+              features: ['Standard block storage for databases'],
+              limitations: 'Does not include performance enhancements',
+            },
+            {
+              tierName: 'Block Volume Performance Units',
+              price: '0.0017 per GB per month',
+              features: [
+                'Performance-optimized storage',
+                'Options for 10 or 20 VPUs for balanced and high performance',
+              ],
+              limitations: 'Performance optimization incurs additional costs',
             },
           ],
         },
@@ -381,7 +525,7 @@ async function main() {
       tool: {
         name: 'Azure Cosmos DB',
         description:
-          'Globally distributed database by Microsoft with multi-model capabilities.',
+          'Azure Cosmos DB is a globally distributed, multi-model database service by Microsoft, designed to offer low latency and high availability. It supports NoSQL, Cassandra, Gremlin, Table, PostgreSQL vCore, and MongoDB APIs, providing flexibility for a variety of use cases such as IoT apps, enterprise applications, and globally distributed apps.',
         type: 'Non-relational',
         skillLevel: 'Intermediate',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
@@ -390,24 +534,78 @@ async function main() {
         {
           name: 'Azure Cosmos DB',
           description:
-            'Globally distributed database by Microsoft with multi-model capabilities.',
+            'Azure Cosmos DB provides a scalable, globally distributed database with options for serverless, provisioned throughput, and autoscale models. It offers built-in high availability, backup and recovery, and support for multiple APIs, making it suitable for both small-scale and large-scale applications.',
           imageUrl:
             'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Azure_Cosmos_DB.svg/800px-Azure_Cosmos_DB.svg.png',
-          features: ['Global distribution', 'Multi-model', 'Automatic scaling'],
+          features: [
+            'Global distribution',
+            'Multi-model support',
+            'Automatic scaling',
+            'High availability',
+            'Backup and recovery',
+          ],
           fitsFor: ['IoT apps', 'Enterprise solutions', 'Global apps'],
           skillLevel: 'Intermediate',
           pricingTiers: [
             {
               tierName: 'Free',
               price: '0',
-              features: ['5GB storage'],
-              limitations: 'Limited throughput',
+              features: [
+                '5GB storage',
+                '1000 RU/s throughput',
+                '25GB monthly data egress',
+              ],
+              limitations: 'Limited to non-production workloads',
             },
             {
-              tierName: 'Standard',
-              price: '25',
-              features: ['10GB storage'],
-              limitations: 'Regional only',
+              tierName: 'Autoscale Provisioned Throughput',
+              price: '5.84/month per 100 RU/s',
+              features: [
+                'Automatically scales throughput',
+                'Single-region write account',
+                'Supports multiple APIs',
+              ],
+              limitations: 'Costs increase with peak usage',
+            },
+            {
+              tierName: 'Standard Provisioned Throughput',
+              price: '5.84/month per 100 RU/s',
+              features: [
+                'Manually scales throughput',
+                'Single-region write account',
+                'Supports multiple APIs',
+              ],
+              limitations: 'Requires manual provisioning',
+            },
+            {
+              tierName: 'Serverless',
+              price: '0.25 per million RU/s',
+              features: [
+                'Pay-per-request model',
+                'Supports all APIs',
+                'No minimum capacity required',
+              ],
+              limitations: 'Not suited for sustained high workloads',
+            },
+            {
+              tierName: 'PostgreSQL vCore',
+              price: '13.943/month (starting)',
+              features: [
+                'Single node or multi-node setup',
+                'Supports PostgreSQL APIs',
+                'Scalable vCore configurations',
+              ],
+              limitations: 'Additional costs for storage and backup',
+            },
+            {
+              tierName: 'MongoDB vCore',
+              price: '111.544/month (starting)',
+              features: [
+                'Supports MongoDB APIs',
+                'Horizontally scalable clusters',
+                'Optimized for aggregation pipelines',
+              ],
+              limitations: 'Cluster management required',
             },
           ],
         },
@@ -417,7 +615,7 @@ async function main() {
       tool: {
         name: 'PlanetScale',
         description:
-          'Serverless MySQL database designed for developers, with features like branching and sharding.',
+          'PlanetScale is a serverless MySQL database platform designed for modern applications. It offers developers powerful features like branching, sharding, and multi-region support, making it ideal for scaling web apps and global databases.',
         type: 'Relational',
         skillLevel: 'Intermediate',
         categoryId: categoryRecords.find((c) => c.name === 'Databases')!.id,
@@ -426,24 +624,62 @@ async function main() {
         {
           name: 'PlanetScale',
           description:
-            'Serverless MySQL database designed for developers, with features like branching and sharding.',
+            'PlanetScale provides a serverless MySQL database platform that simplifies database management with features like sharding, branching, and global scalability. It is ideal for fast-growing applications requiring reliability and performance.',
           imageUrl:
             'https://images.crunchbase.com/image/upload/c_pad,f_auto,q_auto:eco,dpr_1/iidhf24ewhnqtjgrrfbp',
-          features: ['Branching', 'Sharding', 'Automatic scaling'],
-          fitsFor: ['Scalable web apps', 'Global databases'],
+          features: [
+            'Branching',
+            'Sharding',
+            'Automatic scaling',
+            'Multi-region deployment',
+            'Global availability zones',
+            'Vitess expertise',
+          ],
+          fitsFor: [
+            'Scalable web apps',
+            'Global databases',
+            'Enterprise applications',
+          ],
           skillLevel: 'Intermediate',
           pricingTiers: [
             {
               tierName: 'Starter',
               price: '0',
-              features: ['10GB storage'],
-              limitations: 'Single database only',
+              features: [
+                '10 GB storage',
+                'Single database',
+                'Shared resources',
+                'Limited regions',
+              ],
+              limitations: 'Limited scalability and single database only.',
             },
             {
               tierName: 'Pro',
-              price: '29',
-              features: ['50GB storage'],
-              limitations: null,
+              price: '47/month',
+              features: [
+                '10 GB storage',
+                '3 availability zones',
+                '1 primary database (1/8 vCPU, 1 GB memory)',
+                '2 replicas (1/8 vCPU, 1 GB memory each)',
+                'Multi-region support',
+                'Automated failover between nodes',
+              ],
+              limitations:
+                'Storage and vCPU scaling may incur additional costs.',
+            },
+            {
+              tierName: 'Enterprise',
+              price: 'Custom pricing',
+              features: [
+                'Advanced sharding design consultation',
+                'Vitess expertise',
+                'Migration assistance',
+                'Slack-based support',
+                'Business support',
+                'Custom bulk discounts',
+                'Additional regions deployment',
+              ],
+              limitations: 'Requires custom agreement with PlanetScale.',
             },
           ],
         },
@@ -473,13 +709,54 @@ async function main() {
               tierName: 'Free',
               price: '0',
               features: ['5GB storage'],
-              limitations: 'Limited throughput',
+              limitations: 'Limited throughout',
             },
             {
-              tierName: 'Pro',
-              price: '50',
-              features: ['10GB storage', 'High concurrency'],
-              limitations: 'Regional limitations',
+              tierName: 'Launch',
+              price: '19/month',
+              features: [
+                'Includes 10 GiB storage, if 10GiB is exhausted there is an addtional cost of $1.75 per GiB storage',
+                'Includes 300 compute hours',
+                'Scale to 4 vCPU',
+                'Protect up to 2 branches',
+                'Restore up to 7 days',
+              ],
+              limitations: 'Standard support',
+            },
+            {
+              tierName:
+                'Scale (Add performance and capacity for growing applications.)',
+              price: '69/month',
+              features: [
+                'Includes 50 GiB storage, if 50GiB is exhausted there is an addtional cost for $1.50 per GiB',
+                'Includes 750 compute hours',
+                'Scale to 8 vCPU',
+                'Protect up to 5 branches',
+                'Restore up to 14 days',
+                'IP Allow Rules',
+                'Datadog integration',
+              ],
+              support: PricingTierSupportEnum.STANDARD,
+              limitations: 'Standard support',
+            },
+            {
+              tierName: 'Business',
+              price: '700/month',
+              features: [
+                'Includes 500 GiB storage, if 500GiB is exhausted there is an addtional cost for $0.50 per GiB',
+                'Includes 1000 compute hours',
+                'Scale to 10 vCPU',
+                'Protect up to 5 branches',
+                'Restore up to 30 days',
+                'IP Allow Rules',
+                'Datadog integration',
+                'Compliance (SOC 2, ISO)',
+                'HIPAA - early 2025',
+                'Private networking',
+                '99.95% SLA',
+              ],
+              support: PricingTierSupportEnum.PRIORITY,
+              limitations: 'Standard support',
             },
           ],
         },
@@ -499,30 +776,75 @@ async function main() {
         {
           name: 'MongoDB Atlas',
           description:
-            'A global cloud database service that provides automation and scaling for MongoDB deployments. With built-in clustering and data replication, MongoDB Atlas is an excellent choice for applications requiring scalability and high availability.',
-          imageUrl:
-            'https://www.strongdm.com/hubfs/21126185/Technology%20Images/603c5eb831820c3ce6a8f057_603a1586fa052d17fc2a6929_MongoDBAtlas.png',
+            'MongoDB Atlas is a globally distributed cloud database service offering a variety of plans tailored for development and production needs. It provides flexibility, scalability, and advanced security features to support modern application development.',
+          imageUrl: 'https://www.mongodb.com/assets/images/global/favicon.ico',
           features: [
-            'Dynamic schemas',
-            'Cluster automation',
-            'Global data replication',
-            'Integrated security',
-            'Performance monitoring',
+            'Dynamic schema support',
+            'Scalability with sharding',
+            'Multi-cloud support across AWS, Google Cloud, and Azure',
+            'Built-in security features like encryption and auditing',
+            'Advanced analytics and performance optimization',
           ],
-          fitsFor: ['Real-time analytics', 'Mobile apps', 'IoT applications'],
+          fitsFor: [
+            'Modern applications',
+            'IoT applications',
+            'Mobile apps',
+            'Real-time analytics',
+          ],
           skillLevel: 'Intermediate',
           pricingTiers: [
             {
               tierName: 'Free',
-              price: '0',
-              features: ['512MB storage', 'Shared cluster', 'Limited backups'],
-              limitations: 'No dedicated resources',
+              price: '0/hour',
+              features: [
+                'Storage: 512 MB',
+                'RAM: Shared',
+                'vCPU: Shared',
+                'Automated failover',
+                'Cloud availability on AWS, Google Cloud, Azure',
+                'Snapshots every 6 hours',
+                'Basic deployments without downtime upgrades',
+              ],
+              support: PricingTierSupportEnum.STANDARD,
+              limitations:
+                'Limited to basic features and shared infrastructure.',
             },
             {
               tierName: 'Dedicated',
-              price: '57',
-              features: ['Dedicated resources', 'Advanced security'],
-              limitations: 'Higher costs for small-scale apps',
+              price: '0.08/hour',
+              features: [
+                'Storage: Unlimited scaling with up to 4TB per shard',
+                'RAM: Up to 768 GB per shard',
+                'vCPU: Unlimited scaling with up to 96 vCPU per shard',
+                '99.99% Uptime SLA',
+                'Cloud availability on AWS, Google Cloud, Azure',
+                'Snapshots customizable up to every hour/Continuous',
+                'Snapshot retention up to 15 years',
+                'Point-in-time restores available',
+                'Support for deployments with no downtime upgrades',
+                'Global writes and workload isolation (analytics, search nodes)',
+                'Backup retention up to 15 years',
+              ],
+              support: PricingTierSupportEnum.PRIORITY,
+              limitations:
+                'Costs increase with usage and scaling requirements.',
+            },
+            {
+              tierName: 'Serverless',
+              price: '0.10/million reads',
+              features: [
+                'Storage: Up to 1TB',
+                'RAM: Scaled based on actual usage',
+                'vCPU: Scaled based on actual usage',
+                'Multi-cloud support on AWS, Google Cloud, Azure',
+                'Global writes and workload isolation',
+                'Automated data tiering',
+                'Snapshots and point-in-time restores',
+                'Backup retention for 35 days',
+              ],
+              support: PricingTierSupportEnum.PRIORITY,
+              limitations:
+                'Usage-based pricing can lead to higher costs for large-scale workloads.',
             },
           ],
         },

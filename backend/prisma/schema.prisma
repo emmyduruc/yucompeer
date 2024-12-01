@@ -44,8 +44,14 @@ model PricingTier {
   id            String     @id @default(uuid())
   tierName      String     
   price         String
-  features      String[]   
+  features      String[]
+  support       PricingTierSupportEnum        @default(STANDARD)  
   limitations   String?    
   providerId    String
   provider      Provider   @relation(fields: [providerId], references: [id], onDelete: Cascade) // Valid cascade delete
+}
+
+enum PricingTierSupportEnum {
+    STANDARD 
+    PRIORITY
 }

@@ -27,7 +27,14 @@ const Table: React.FC<TableProps> = ({ providers }) => {
             <p className="text-sm text-gray-600 mb-4 font-mono">
               {provider.description}
             </p>
-            <p className="text-sm font-mono text-gray-500 mb-4">
+            <p className="text-sm font-mono text-black-500 mb-4">
+              <strong>Features:</strong>{' '}
+              {provider?.features.join(', ') || 'N/A'}
+            </p>
+            <p className="text-sm font-mono text-black-500 mb-4">
+              <strong>Fits For:</strong> {provider?.fitsFor.join(', ') || 'N/A'}
+            </p>
+            <p className="text-sm font-mono text-black-500 mb-4">
               <strong>Skill Level:</strong> {provider?.skillLevel || 'N/A'}
             </p>
             <div>

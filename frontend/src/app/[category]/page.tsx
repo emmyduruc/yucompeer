@@ -29,7 +29,6 @@ const CategoryPage = () => {
     queryKey: ['providers', category],
     queryFn: () => createTechStack.fetchProvidersByCategory(category),
   });
-
   const handleCompare = () => {
     if (dropdown1 && dropdown2) {
       setSelectedProviders([dropdown1, dropdown2]);

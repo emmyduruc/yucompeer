@@ -22,6 +22,8 @@ export interface Provider {
   description: string;
   imageUrl: string;
   skillLevel: string;
+  features: string[];
+  fitsFor: string[];
   pricingTiers: PricingTier[];
   toolId: string;
   tool: Tool;

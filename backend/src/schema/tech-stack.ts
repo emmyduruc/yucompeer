@@ -15,3 +15,8 @@ export const UpdateToolSchema = z.object({
   skillLevel: z.enum(['Beginner', 'Intermediate', 'Advanced']).optional(),
   categoryId: z.string(),
 });
+
+export enum PricingTierSupportEnum {
+  STANDARD = 'STANDARD',
+  PRIORITY = 'PRIORITY',
+}
