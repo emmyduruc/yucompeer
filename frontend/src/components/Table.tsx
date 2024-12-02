@@ -9,7 +9,7 @@ const Table: React.FC<TableProps> = ({ providers }) => {
   return (
     <div className="p-4 overflow-x-auto w-full">
       <div className="flex gap-4 w-full h-full">
-        {providers.map((provider) => (
+        {providers?.map((provider) => (
           <div
             key={provider.name}
             className="min-w-[400px] max-w-[400px] min-h-[800px] border-4 border-green-200 shadow-lg rounded-xl p-4 flex flex-col"

@@ -54,16 +54,16 @@ async function main() {
       system best aligns with their needs for website or application development.`,
     },
     {
-      name: 'Project Management Tools',
-      description: `Project management tools streamline the planning, tracking, and execution of tasks within teams. Platforms like Jira, ClickUp, 
+      name: 'Project Management',
+      description: `Project management streamline the planning, tracking, and execution of tasks within teams. Platforms like Jira, ClickUp, 
       and Trello offer features such as task assignment, progress tracking, and collaboration to enhance productivity. 
   
       The table below lets users compare these tools, providing detailed insights into pricing tiers, integrations, and feature sets. 
       This enables teams to select the most efficient solution for managing workflows and meeting project deadlines.`,
     },
     {
-      name: 'Development Workflow Tools',
-      description: `Development workflow tools, such as GitHub, GitLab, and Bitbucket, are essential for managing source code, collaboration, 
+      name: 'Programming',
+      description: `Programming, such as GitHub, GitLab, and Bitbucket, are essential for managing source code, collaboration, 
       and version control in software development. These tools support continuous integration, deployment (CI/CD), and code reviews. 
   
       The table below provides a comparison of these platforms, helping users identify the best fit for their development needs 
@@ -79,11 +79,11 @@ async function main() {
       This ensures developers can select the IDE that enhances their workflow and efficiency.`,
     },
     {
-      name: 'No-Code Platforms',
-      description: `No-code platforms, like Webflow, Bubble, and Glide, empower users to create websites, mobile apps, and business tools 
+      name: 'No Code',
+      description: `No code, like Webflow, Bubble, and Glide, empower users to create websites, mobile apps, and business tools 
       without writing any code. They feature drag-and-drop interfaces, pre-built templates, and integrations with popular services. 
   
-      The table below provides comparisons of no-code platforms based on pricing, scalability, and ease of use, 
+      The table below provides comparisons of no-code based on pricing, scalability, and ease of use, 
       enabling users to choose the most suitable solution for their projects.`,
     },
   ];
@@ -2149,8 +2149,7 @@ async function main() {
         name: 'Webflow',
         description:
           'Webflow is a no-code platform for building responsive websites with advanced design capabilities, CMS, and hosting.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2199,8 +2198,7 @@ async function main() {
         name: 'Bubble',
         description:
           'Bubble is a powerful no-code platform for building complex web applications without coding.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2249,8 +2247,7 @@ async function main() {
         name: 'Adalo',
         description:
           'Adalo is a no-code platform for building mobile apps and deploying them to app stores without any coding.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2299,8 +2296,7 @@ async function main() {
         name: 'OutSystems',
         description:
           'OutSystems is an enterprise-grade no-code/low-code platform for building scalable business applications.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2339,8 +2335,7 @@ async function main() {
         name: 'Glide',
         description:
           'Glide is a no-code platform for building apps from Google Sheets and other data sources.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2379,8 +2374,7 @@ async function main() {
         name: 'Airtable',
         description:
           'Airtable is a no-code platform for organizing data and automating workflows through visual databases.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2419,8 +2413,7 @@ async function main() {
         name: 'Zapier',
         description:
           'Zapier is a no-code automation platform that connects apps to automate workflows.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2458,8 +2451,7 @@ async function main() {
         name: 'Wix',
         description:
           'Wix is a no-code website builder that allows users to create professional-looking websites with ease using a drag-and-drop editor.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2523,8 +2515,7 @@ async function main() {
         name: 'AppGyver',
         description:
           'AppGyver is a no-code platform for creating complex, high-performance web and mobile applications.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2571,8 +2562,7 @@ async function main() {
         name: 'Softr',
         description:
           'Softr is a no-code platform for building web apps, internal tools, and client portals using Airtable or Google Sheets as a backend.',
-        categoryId: categoryRecords.find((c) => c.name === 'No-Code Platforms')!
-          .id,
+        categoryId: categoryRecords.find((c) => c.name === 'No Code')!.id,
       },
       providers: [
         {
@@ -2907,9 +2897,7 @@ async function main() {
         name: 'GitHub',
         description:
           'A cloud-based platform for version control and collaboration, allowing developers to host and review code, manage projects, and build software together.',
-        categoryId: categoryRecords.find(
-          (c) => c.name === 'Development Workflow Tools',
-        )!.id,
+        categoryId: categoryRecords.find((c) => c.name === 'Programming')!.id,
       },
       providers: [
         {
@@ -2954,9 +2942,7 @@ async function main() {
         name: 'GitLab',
         description:
           'A web-based DevOps lifecycle tool providing a Git repository manager with features for issue tracking, CI/CD, and more.',
-        categoryId: categoryRecords.find(
-          (c) => c.name === 'Development Workflow Tools',
-        )!.id,
+        categoryId: categoryRecords.find((c) => c.name === 'Programming')!.id,
       },
       providers: [
         {
@@ -3001,9 +2987,7 @@ async function main() {
         name: 'Bitbucket',
         description:
           'A Git repository management solution designed for professional teams, offering CI/CD pipelines and integration with Jira.',
-        categoryId: categoryRecords.find(
-          (c) => c.name === 'Development Workflow Tools',
-        )!.id,
+        categoryId: categoryRecords.find((c) => c.name === 'Programming')!.id,
       },
       providers: [
         {
@@ -3048,9 +3032,7 @@ async function main() {
         name: 'Jenkins',
         description:
           'An open-source automation server that helps automate parts of the software development lifecycle, including building, testing, and deploying.',
-        categoryId: categoryRecords.find(
-          (c) => c.name === 'Development Workflow Tools',
-        )!.id,
+        categoryId: categoryRecords.find((c) => c.name === 'Programming')!.id,
       },
       providers: [
         {
@@ -3083,9 +3065,7 @@ async function main() {
         name: 'Azure DevOps',
         description:
           'A cloud-based DevOps service by Microsoft that offers CI/CD pipelines, project management, and version control.',
-        categoryId: categoryRecords.find(
-          (c) => c.name === 'Development Workflow Tools',
-        )!.id,
+        categoryId: categoryRecords.find((c) => c.name === 'Programming')!.id,
       },
       providers: [
         {
@@ -3130,9 +3110,7 @@ async function main() {
         name: 'CircleCI',
         description:
           'A cloud-based continuous integration and delivery platform that automates development workflows.',
-        categoryId: categoryRecords.find(
-          (c) => c.name === 'Development Workflow Tools',
-        )!.id,
+        categoryId: categoryRecords.find((c) => c.name === 'Programming')!.id,
       },
       providers: [
         {
@@ -3174,7 +3152,7 @@ async function main() {
         description:
           'ClickUp is an all-in-one productivity platform designed for teams to collaborate, manage projects, and streamline workflows effectively.',
         categoryId: categoryRecords.find(
-          (c) => c.name === 'Project Management Tools',
+          (c) => c.name === 'Project Management',
         )!.id,
       },
       providers: [
@@ -3232,7 +3210,7 @@ async function main() {
         description:
           'Jira is a project management tool tailored for software development teams, offering features like agile boards and sprint planning.',
         categoryId: categoryRecords.find(
-          (c) => c.name === 'Project Management Tools',
+          (c) => c.name === 'Project Management',
         )!.id,
       },
       providers: [
@@ -3288,7 +3266,7 @@ async function main() {
         description:
           'Trello is a simple and intuitive project management tool based on Kanban-style boards for organizing tasks and workflows.',
         categoryId: categoryRecords.find(
-          (c) => c.name === 'Project Management Tools',
+          (c) => c.name === 'Project Management',
         )!.id,
       },
       providers: [
@@ -3344,7 +3322,7 @@ async function main() {
         description:
           'Asana is a robust project management tool that enables teams to collaborate, track progress, and achieve goals efficiently.',
         categoryId: categoryRecords.find(
-          (c) => c.name === 'Project Management Tools',
+          (c) => c.name === 'Project Management',
         )!.id,
       },
       providers: [
@@ -3401,14 +3379,14 @@ async function main() {
         description:
           'Monday.com is a flexible project management platform that allows teams to create custom workflows and automate processes.',
         categoryId: categoryRecords.find(
-          (c) => c.name === 'Project Management Tools',
+          (c) => c.name === 'Project Management',
         )!.id,
       },
       providers: [
         {
           name: 'Monday.com',
           description:
-            'Monday.com provides visual project management tools with automation and integrations for efficient teamwork.',
+            'Monday.com provides visual project management with automation and integrations for efficient teamwork.',
           imageUrl: 'https://cdn.monday.com/static/img/logo.png',
           features: [
             'Custom Dashboards',
