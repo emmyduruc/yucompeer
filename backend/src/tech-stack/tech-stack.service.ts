@@ -15,7 +15,6 @@ export class TechStackService {
     });
   }
   async getProvidersByCategory(category: string) {
-    console.log('category:....', category);
     const categoryEntity = await prisma.category.findFirst({
       where: { name: { equals: category, mode: 'insensitive' } },
       include: {
