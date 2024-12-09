@@ -17,6 +17,11 @@ export default {
         gluten: ['Gluten'],
         monsterrat: ['Montserrat'],
         lora: ['Lora'],
+        roboto: ['"Roboto", sans-serif'],
+      },
+      backgroundImage: {
+        'desktop-background': "url('/images/desktop-landing-bg.png')",
+        'mobile-background': "url('/images/mobile-landing-bg.png')",
       },
     },
   },
