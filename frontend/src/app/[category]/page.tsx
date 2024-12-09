@@ -1,13 +1,12 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
-import Table from '../../components/Table';
-import { usePathname } from 'next/navigation';
-import { createTechStack } from '@/services/techStack';
 import { Loading } from '@/components/Loading';
-import { ErrorLoader } from '@/components/ErrorLoader';
 import { Category, Provider } from '@/schema/tools.schema';
+import { createTechStack } from '@/services/techStack';
+import { useQuery } from '@tanstack/react-query';
+import { usePathname } from 'next/navigation';
+import { useState } from 'react';
+import Table from '../../components/Table';
 
 const CategoryPage = () => {
   const { data: selectedCategory } = useQuery({
