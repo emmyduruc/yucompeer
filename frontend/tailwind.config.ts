@@ -11,10 +11,12 @@ export default {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
+        primary: '#202938',
       },
       fontFamily: {
         gluten: ['Gluten'],
         monsterrat: ['Montserrat'],
+        lora: ['Lora'],
       },
     },
   },
