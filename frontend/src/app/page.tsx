@@ -31,6 +31,39 @@ const faqs = [
   },
 ];
 
+const allFeatures = [
+  {
+    title: 'Comprehensive Comparisons',
+    description:
+      'Easily compare cloud services, databases, CMS platforms, and project management tools side by side. Get all the key details you need in one place.',
+  },
+  {
+    title: 'Price Tracking',
+    description:
+      'Stay updated with real-time pricing changes and exclusive deals, so you always get the best value for your investment.',
+  },
+  {
+    title: 'Customizable Filters',
+    description:
+      'Narrow down your search based on pricing, features, scalability, and user reviews to find the solution that fits your unique requirements.',
+  },
+  {
+    title: 'Real-Time Updates',
+    description:
+      'Stay informed with live pricing and feature updates so you always have the latest information at your fingertips.',
+  },
+  {
+    title: 'User-Friendly Interface',
+    description:
+      'Designed with simplicity in mind, our platform makes complex comparisons effortless, whether youre a beginner or a pro.',
+  },
+  {
+    title: 'Comprehensive Comparisons',
+    description:
+      'Easily compare cloud services, databases, CMS platforms, and project management tools side by side. Get all the key details you need in one place.',
+  },
+];
+
 const HomePage = () => {
   return (
     <ImageBackground>
@@ -70,7 +103,7 @@ const HeroSection = () => {
         className="md:max-w-[1090px] md:px-14 px-6 md:mt-[76px] mt-[33px] mx-auto aspect-video"
         alt="hero-image"
       />
-      <div className="blur-[10px] -mt-12 bg-white p-12" />
+      <div className="blur-[10px] -mt-12 bg-white md:p-12 p-6" />
     </div>
   );
 };
@@ -93,7 +126,53 @@ const FeaturesIntroSection = ({ id }: { id?: string }) => {
         and drive exceptional results. Experience the difference that
         cutting-edge technology and unique solutions can make.
       </p>
-      <div className="md:h-[691px] w-full bg-black mt-4 h-[800px]"></div>
+      <div className="max-w-[1192px] gap-4 mx-auto px-4 w-full mt-4 grid md:grid-cols-2">
+        {Array.from({ length: 3 }).map((_, index) => (
+          <div
+            key={index}
+            className={`bg-[#F0F6FFCC] w-fit rounded-b-2xl ${index === 0 ? 'row-span-2' : ''}`}
+          >
+            <div className="flex justify-center">
+              <Image
+                src="/images/feature-hero-image.png"
+                width={253}
+                height={302}
+                alt=""
+                className="md:hidden px-4 md:px-8 w-full mb-[14px]"
+              />
+              {index !== 0 && (
+                <Image
+                  src="/images/feature-hero-image@2x.png"
+                  width={387}
+                  height={215}
+                  alt=""
+                  className="hidden md:block aspect-video w-[80%] max-h-[215px] mb-[20px]"
+                />
+              )}
+              {index === 0 && (
+                <Image
+                  src="/images/feature-hero-image@3x.png"
+                  width={387}
+                  height={215}
+                  alt=""
+                  className="hidden md:block mb-8"
+                />
+              )}
+            </div>
+            <div className="px-4 md:px-0 md:w-[80%] mx-auto">
+              <p className="font-medium text-base md:text-[20px] md:ont-semibold">
+                Compare Payment Services
+              </p>
+              <p className="leading-5 md:text-base mt-2 mb-1 text-xs">
+                Databases are foundational components of software applications,
+                used to store, manage, and retrieve data. They come in two
+                primary types: relational (SQL) and non-relational (NoSQL)
+                databases.
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
       <button className="md:mt-[45px] mt-10 md:px-10 px-6 py-2 bg-primary text-white rounded-full font-lora font-semibold text-sm md:text-xl">
         Explore All Features
       </button>
@@ -104,7 +183,7 @@ const FeaturesIntroSection = ({ id }: { id?: string }) => {
 const AllFeaturesSection = () => {
   return (
     <div className="bg-[#D9D9D933] py-12 max-w-[1286px] grid md:grid-cols-3 rounded-[20px] mx-auto">
-      {Array.from({ length: 6 }).map((_, index) => (
+      {allFeatures.map((feature, index) => (
         <div
           key={index}
           className={`md:border-l ${index < 5 ? 'border-b md:border-b-0' : ''} ${
@@ -113,14 +192,10 @@ const AllFeaturesSection = () => {
         >
           <div className="flex items-center gap-2">
             <GoDotFill />
-            <p className="md:text-xl text-sm font-medium">
-              Comprehensive Comparisons
-            </p>
+            <p className="md:text-xl text-sm font-medium">{feature.title}</p>
           </div>
           <p className="md:leading-[25px] leading-5 text-xs mt-[15px]">
-            Easily compare cloud services, databases, CMS platforms, and project
-            management tools side by side. Get all the key details you need in
-            one place.
+            {feature.description}
           </p>
         </div>
       ))}

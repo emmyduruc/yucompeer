@@ -42,7 +42,7 @@ const CategoryPage = () => {
 
   if (isLoading)
     return (
-      <div className="justify-center flex-1 items-center">
+      <div className="flex justify-center flex-1 items-center">
         <Loading />
       </div>
     );
@@ -58,7 +58,7 @@ const CategoryPage = () => {
           {selectedCategory?.description ?? ''}
         </p>
       </div>
-      <div className="flex items-center font-mono gap-4 mb-4 pl-4">
+      <div className="flex md:flex-row flex-col items-center font-mono gap-4 mb-4 pl-4">
         <select
           value={dropdown1}
           onChange={(e) => setDropdown1(e.target.value)}
@@ -89,19 +89,20 @@ const CategoryPage = () => {
           ))}
         </select>
 
-        <button
-          onClick={handleCompare}
-          className="bg-green-500 text-white px-4 py-2 rounded font-mono"
-        >
-          Compare
-        </button>
-
-        <button
-          onClick={handleReset}
-          className="bg-gray-500 text-white px-4 py-2 rounded font-mono"
-        >
-          Reset
-        </button>
+        <div className="flex md:block gap-3">
+          <button
+            onClick={handleCompare}
+            className="bg-green-500 text-white px-4 py-2 rounded font-mono"
+          >
+            Compare
+          </button>
+          <button
+            onClick={handleReset}
+            className="bg-gray-500 text-white px-4 py-2 rounded font-mono"
+          >
+            Reset
+          </button>
+        </div>
       </div>
 
       <Table
