@@ -42,19 +42,19 @@ const CategoryPage = () => {
 
   if (isLoading)
     return (
-      <div className="flex justify-center flex-1 items-center">
+      <div className="w-full h-full flex justify-center items-center">
         <Loading />
       </div>
     );
   if (error) return <div>Error loading providers</div>;
 
   return (
-    <div className="p-4">
+    <div className="p-4 max-w-[1400px] mx-auto">
       <div className="items-center gap-4 mb-4 pl-4">
         <h1 className="text-2xl font-bold mb-4 font-mono">
           {category?.charAt(0).toUpperCase() + category?.slice(1)}:
         </h1>
-        <p className="text-gray-600 mb-4 font-mono">
+        <p className="text-gray-600 mb-4 md:text-sm text-xs font-mono">
           {selectedCategory?.description ?? ''}
         </p>
       </div>
@@ -62,7 +62,7 @@ const CategoryPage = () => {
         <select
           value={dropdown1}
           onChange={(e) => setDropdown1(e.target.value)}
-          className="border-2 border-gray-300 p-2 rounded"
+          className="border-2 border-gray-300 p-2 rounded md:text-sm text-xs"
         >
           <option value="" disabled>
             Select first provider to compare
@@ -77,7 +77,7 @@ const CategoryPage = () => {
         <select
           value={dropdown2}
           onChange={(e) => setDropdown2(e.target.value)}
-          className="border-2 border-gray-300 p-2 rounded"
+          className="border-2 border-gray-300 p-2 rounded  md:text-sm text-xs"
         >
           <option value="" disabled>
             Select second provider to compare
@@ -89,16 +89,16 @@ const CategoryPage = () => {
           ))}
         </select>
 
-        <div className="flex md:block gap-3">
+        <div className="flex md:block space-x-0 md:space-x-3 gap-3">
           <button
             onClick={handleCompare}
-            className="bg-green-500 text-white px-4 py-2 rounded font-mono"
+            className="bg-green-500 text-white px-4 py-2 rounded font-mono  md:text-sm text-xs"
           >
             Compare
           </button>
           <button
             onClick={handleReset}
-            className="bg-gray-500 text-white px-4 py-2 rounded font-mono"
+            className="bg-gray-500 text-white px-4 py-2 rounded font-mono  md:text-sm text-xs"
           >
             Reset
           </button>

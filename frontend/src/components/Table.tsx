@@ -13,7 +13,7 @@ const Table: React.FC<TableProps> = ({ providers }) => {
   };
 
   return (
-    <div className="p-4 overflow-x-auto max-w-fit mx-auto w-full">
+    <div className="p-4 overflow-x-auto  w-full">
       <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-4 w-full h-full">
         {providers?.map((provider) => (
           <div
@@ -25,9 +25,9 @@ const Table: React.FC<TableProps> = ({ providers }) => {
                 <img
                   src={provider.imageUrl}
                   alt={provider.name}
-                  className="h-20 w-20 object-contain mr-4"
+                  className="lg:h-14 lg:w-14 h-12 w-12 object-contain mr-4"
                 />
-                <h2 className="text-xl font-bold font-mono text-gray-800">
+                <h2 className="text-sm lg:text-base font-bold font-mono text-gray-800">
                   {provider.name}
                 </h2>
               </div>
