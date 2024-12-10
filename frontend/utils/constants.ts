@@ -53,3 +53,10 @@ export const allFeatures = [
       'Easily compare cloud services, databases, CMS platforms, and project management tools side by side. Get all the key details you need in one place.',
   },
 ];
+
+export const navigationLinks = [
+  { label: 'Home', id: 'home' },
+  { label: 'Features', id: 'features' },
+  { label: 'FAQs', id: 'faqs' },
+  { label: 'Contact Us', id: 'contact' },
+];
