@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { useQuery, useQueryClient } from '@tanstack/react-query';
-import { FiMenu, FiX } from 'react-icons/fi';
-import { usePathname } from 'next/navigation';
-import { createTechStack } from '@/services/techStack';
-import { ErrorLoader } from './ErrorLoader';
-import { Loading } from './Loading';
 import { Category, Tool } from '@/schema/tools.schema';
+import { createTechStack } from '@/services/techStack';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import React, { useState } from 'react';
+import { FiMenu, FiX } from 'react-icons/fi';
+import { ErrorLoader } from './ErrorLoader';
 
 const Drawer: React.FC = () => {
   const queryClient = useQueryClient();
@@ -24,12 +23,7 @@ const Drawer: React.FC = () => {
     queryFn: createTechStack.fetchTechStack,
   });
 
-  if (isLoading)
-    return (
-      <div className="justiy-center flex-1">
-        <Loading />
-      </div>
-    );
+  if (isLoading) return null;
 
   const categories = Array.from(
     new Set(
